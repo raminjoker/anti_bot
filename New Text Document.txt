@@ -1,0 +1,23 @@
+let healthStore: HKHealthStore? = {
+        if HKHealthStore.isHealthDataAvailable() {
+            return HKHealthStore()
+        } else {
+            return nil
+        }
+    }()
+ 
+let stepsCount = HKQuantityType.quantityTypeForIdentifier(
+    HKQuantityTypeIdentifierStepCount)
+ 
+let dataTypesToWrite = NSSet(object: stepsCount)
+let dataTypesToRead = NSSet(object: stepsCount)   
+ 
+healthStore?.requestAuthorizationToShareTypes(dataTypesToWrite,
+readTypes: dataTypesToRead,
+completion: { [unowned self] (success, error) in
+            if success {
+                println("SUCCESS")
+            } else {
+                println(error.description)
+            }
+        })
