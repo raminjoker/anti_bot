@@ -1,2 +1,2 @@
 # anti_bot
-anti_bot
+❌انتی  اسپم❌
